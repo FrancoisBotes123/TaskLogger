@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TaskLoggerApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\TaskLoggerApp.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TaskLoggerApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TaskLoggerApp.props",
+      "PackagePath": "build\\TaskLoggerApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TaskLoggerApp.props",
+      "PackagePath": "buildMultiTargeting\\TaskLoggerApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TaskLoggerApp.props",
+      "PackagePath": "buildTransitive\\TaskLoggerApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
