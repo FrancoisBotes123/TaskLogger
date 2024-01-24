@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "NDiRD8ySCUOwggTuCJZ9Go+iemcnDxvyTgCwKCKpwMM=",
+  "Source": "TaskLoggerApi",
+  "BasePath": "_content/TaskLoggerApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

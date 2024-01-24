@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "w124OC9zMUbiam0SJGa4JxlMXmR7HnAQxiOCwndzQwvLU6wRdwvyi3KAAEl6IUBjYlzBtqPfXA/19Wg9LxPxVA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Francois\\Documents\\thegunshopreportviewer\\TaskLoggerApi\\TaskLoggerApi\\TaskLoggerApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Francois\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\Francois\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Francois\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\Francois\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\Francois\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\Francois\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
