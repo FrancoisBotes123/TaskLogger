@@ -10,9 +10,7 @@ using TaskLoggerApi.Models;
 
 namespace TaskLoggerApi.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TasksController : ControllerBase
+    public class TasksController : BaseApiController
     {
         private readonly TaskLoggerDbContext _context;
 

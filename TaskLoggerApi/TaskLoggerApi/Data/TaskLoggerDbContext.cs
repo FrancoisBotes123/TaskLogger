@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskLoggerApi.Models;
+using TaskLoggerApi.Models.User;
 
 
 namespace TaskLoggerApi.Data
@@ -11,7 +12,7 @@ namespace TaskLoggerApi.Data
         {
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<AppUser> Users { get; set; }
         public DbSet<Tasks> Tasks { get; set; }
         public DbSet<Groups> Groups { get; set; }
 
@@ -21,7 +22,7 @@ namespace TaskLoggerApi.Data
             base.OnModelCreating(modelBuilder);
 
             // User to Task relationship
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<AppUser>()
                 .HasMany(u => u.Tasks)
                 .WithOne(t => t.User)
                 .HasForeignKey(t => t.UserId);
@@ -39,7 +40,7 @@ namespace TaskLoggerApi.Data
                 .WithMany(u => u.Groups)
                 .UsingEntity(j => j.ToTable("UserGroups")); // This creates a junction table named 'UserGroups'
 
-            // Seed data
+           /* // Seed data
             modelBuilder.Entity<User>().HasData(
                 new User { UserId = 1, UserName = "admin", Role = UserRole.Admin },
                 new User { UserId = 2, UserName = "manager", Role = UserRole.Manager },
@@ -52,7 +53,7 @@ namespace TaskLoggerApi.Data
 
             modelBuilder.Entity<Tasks>().HasData(
                 new Tasks { TasksId = 1, Title = "Initial Task", Description = "This is a seeded task", IsCompleted = false, CreatedDate = DateTime.Now, UserId = 3 }
-            );
+            );*/
         }
     }
 }

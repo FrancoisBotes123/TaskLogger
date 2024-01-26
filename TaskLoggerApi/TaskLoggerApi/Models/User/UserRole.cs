@@ -1,4 +1,4 @@
-﻿namespace TaskLoggerApi.Models
+﻿namespace TaskLoggerApi.Models.User
 {
     public enum UserRole
     {

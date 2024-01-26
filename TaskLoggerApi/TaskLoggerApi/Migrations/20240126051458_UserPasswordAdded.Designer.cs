@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskLoggerApi.Data;
 
@@ -11,9 +12,11 @@ using TaskLoggerApi.Data;
 namespace TaskLoggerApi.Migrations
 {
     [DbContext(typeof(TaskLoggerDbContext))]
-    partial class TaskLoggerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240126051458_UserPasswordAdded")]
+    partial class UserPasswordAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,17 +25,17 @@ namespace TaskLoggerApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AppUserGroups", b =>
+            modelBuilder.Entity("GroupsUser", b =>
                 {
                     b.Property<int>("GroupsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UsersAppUserId")
+                    b.Property<int>("UsersUserId")
                         .HasColumnType("int");
 
-                    b.HasKey("GroupsId", "UsersAppUserId");
+                    b.HasKey("GroupsId", "UsersUserId");
 
-                    b.HasIndex("UsersAppUserId");
+                    b.HasIndex("UsersUserId");
 
                     b.ToTable("UserGroups", (string)null);
                 });
@@ -91,13 +94,13 @@ namespace TaskLoggerApi.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("TaskLoggerApi.Models.User.AppUser", b =>
+            modelBuilder.Entity("TaskLoggerApi.Models.User", b =>
                 {
-                    b.Property<int>("AppUserId")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppUserId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
                     b.Property<byte[]>("PasswordHash")
                         .IsRequired()
@@ -114,12 +117,12 @@ namespace TaskLoggerApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AppUserId");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("AppUserGroups", b =>
+            modelBuilder.Entity("GroupsUser", b =>
                 {
                     b.HasOne("TaskLoggerApi.Models.Groups", null)
                         .WithMany()
@@ -127,16 +130,16 @@ namespace TaskLoggerApi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TaskLoggerApi.Models.User.AppUser", null)
+                    b.HasOne("TaskLoggerApi.Models.User", null)
                         .WithMany()
-                        .HasForeignKey("UsersAppUserId")
+                        .HasForeignKey("UsersUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("TaskLoggerApi.Models.Groups", b =>
                 {
-                    b.HasOne("TaskLoggerApi.Models.User.AppUser", "Manager")
+                    b.HasOne("TaskLoggerApi.Models.User", "Manager")
                         .WithMany()
                         .HasForeignKey("ManagerId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -147,7 +150,7 @@ namespace TaskLoggerApi.Migrations
 
             modelBuilder.Entity("TaskLoggerApi.Models.Tasks", b =>
                 {
-                    b.HasOne("TaskLoggerApi.Models.User.AppUser", "User")
+                    b.HasOne("TaskLoggerApi.Models.User", "User")
                         .WithMany("Tasks")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -156,7 +159,7 @@ namespace TaskLoggerApi.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("TaskLoggerApi.Models.User.AppUser", b =>
+            modelBuilder.Entity("TaskLoggerApi.Models.User", b =>
                 {
                     b.Navigation("Tasks");
                 });

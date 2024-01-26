@@ -1,4 +1,5 @@
 ﻿using System;
+using TaskLoggerApi.Models.User;
 
 namespace TaskLoggerApi.Models
 {
@@ -10,6 +11,6 @@ namespace TaskLoggerApi.Models
         public bool IsCompleted { get; set; }
         public DateTime CreatedDate { get; set; }
         public int UserId { get; set; }
-        public User User { get; set; }
+        public AppUser User { get; set; }
     }
 }
