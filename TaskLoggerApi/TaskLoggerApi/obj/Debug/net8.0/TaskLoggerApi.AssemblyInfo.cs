@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskLoggerApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24aec36de83fc82df0c02efc5970ebe8cf0eb24a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16571d86b497307850ac88b4444345929b26a346")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskLoggerApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskLoggerApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

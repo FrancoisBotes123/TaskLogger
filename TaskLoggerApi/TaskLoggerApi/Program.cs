@@ -1,21 +1,18 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using TaskLoggerApi.Data;
+using TaskLoggerApi.Extentions;
 using TaskLoggerApi.Interfaces;
 using TaskLoggerApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-// Configure DbContext with the connection string
-builder.Services.AddDbContext<TaskLoggerDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("connString")));
-
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddCors();
-builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddApplicationService(builder.Configuration);
+builder.Services.AddIdentityServices(builder.Configuration);
 
 var app = builder.Build();
 
@@ -27,7 +24,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:7089"));
-
+app.UseAuthentication();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

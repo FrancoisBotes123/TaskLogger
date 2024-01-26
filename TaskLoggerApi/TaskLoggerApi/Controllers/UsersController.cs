@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,8 +12,10 @@ using TaskLoggerApi.Models.User;
 
 namespace TaskLoggerApi.Controllers
 {
+    [Authorize]
     public class UsersController : BaseApiController
     {
+       
         private readonly TaskLoggerDbContext _context;
         public UsersController(TaskLoggerDbContext context)
         {
