@@ -37,6 +37,26 @@ namespace TaskLoggerApi.Controllers
             return Ok(user);
         }
 
+        [HttpPost("login")]
+
+        public async Task<ActionResult<AppUser>> Login(UserLoginDTO userLoginDTO)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserName == userLoginDTO.UserName);
+
+            if (user == null) return Unauthorized("Username incorrect");
+
+            using var hmac = new HMACSHA512(user.PasswordSalt);
+
+            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(userLoginDTO.Password));
+
+            for(int i = 0; i < computedHash.Length; i++)
+            {
+                if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Password incorrect");
+            }
+
+            return Ok(user);
+
+        }
         private async Task<bool> UserExists(string username)
         {
             return await _context.Users.AnyAsync(x => x.UserName == username.ToLower());
