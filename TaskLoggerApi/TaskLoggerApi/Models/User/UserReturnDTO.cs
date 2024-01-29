@@ -1,4 +1,6 @@
-﻿namespace TaskLoggerApi.Models.User
+﻿using TaskLoggerApi.Models.Tasks;
+
+namespace TaskLoggerApi.Models.User
 {
     public class UserReturnDTO
     {
@@ -7,6 +9,6 @@
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime LastActvie { get; set; } = DateTime.UtcNow;
         public string  Token { get; set; }
-        public List<Tasks> Tasks { get; set; }
+        public List<Taskss> Tasks { get; set; }
     }
 }

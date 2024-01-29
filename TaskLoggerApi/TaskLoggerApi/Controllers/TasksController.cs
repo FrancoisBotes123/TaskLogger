@@ -1,38 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TaskLoggerApi.Data;
-using TaskLoggerApi.Models;
+using TaskLoggerApi.Interfaces;
+using TaskLoggerApi.Models.Tasks;
+using TaskLoggerApi.Models.User;
 
 namespace TaskLoggerApi.Controllers
 {
     [Authorize]
     public class TasksController : BaseApiController
     {
-        private readonly TaskLoggerDbContext _context;
+        private readonly ITaskRepository _taskRepository;
+        private readonly IUserRepository _userRepository;
 
-        public TasksController(TaskLoggerDbContext context)
+        private readonly IMapper _mapper;
+
+        public TasksController(ITaskRepository taskRepository,IUserRepository userRepository,IMapper mapper)
         {
-            _context = context;
+            _taskRepository = taskRepository;
+            _userRepository = userRepository;
+            _mapper = mapper;
+
         }
 
         // GET: api/Tasks
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Tasks>>> GetTasks()
+        public async Task<IEnumerable<Taskss>> GetTasks()
         {
-            return await _context.Tasks.ToListAsync();
+            return await _taskRepository.GetAllTasksAsync();
         }
 
         // GET: api/Tasks/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Tasks>> GetTasks(int id)
+        public async Task<ActionResult<Taskss>> GetTasks(int id)
         {
-            var tasks = await _context.Tasks.FindAsync(id);
+            var tasks = await _taskRepository.GetTaskAsync(id);
 
             if (tasks == null)
             {
@@ -42,50 +53,49 @@ namespace TaskLoggerApi.Controllers
             return tasks;
         }
 
+        [HttpGet("user-tasks/{username}")]
+        public async Task<ActionResult<Taskss>> GetUserTasks(string username)
+        {
+            var usernameFromClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (usernameFromClaim == null || usernameFromClaim != username) return BadRequest();
+
+            var user = await _userRepository.GetUserByUserNameAsync(username);
+
+            if (user == null) return NotFound();
+
+            var userTasks = _taskRepository.GetUserTasksAsync(user.Id);
+
+            if (userTasks == null) return NotFound();
+
+            return Ok(userTasks);
+        }
+
         // PUT: api/Tasks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTasks(int id, Tasks tasks)
+        public async Task<IActionResult> PutTasks(UpdateTaskDTO updateTask)
         {
-            if (id != tasks.TasksId)
-            {
-                return BadRequest();
-            }
+            if(updateTask == null) return BadRequest();
 
-            _context.Entry(tasks).State = EntityState.Modified;
+            //_mapper.Map(updateTask)
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TasksExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok(updateTask);
         }
 
         // POST: api/Tasks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Tasks>> PostTasks(Tasks tasks)
+        /*[HttpPost]
+        public async Task<ActionResult<Taskss>> PostTasks(Taskss tasks)
         {
             _context.Tasks.Add(tasks);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetTasks", new { id = tasks.TasksId }, tasks);
-        }
+        }*/
 
         // DELETE: api/Tasks/5
-        [HttpDelete("{id}")]
+       /* [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTasks(int id)
         {
             var tasks = await _context.Tasks.FindAsync(id);
@@ -98,11 +108,11 @@ namespace TaskLoggerApi.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
+        }*/
 
-        private bool TasksExists(int id)
+        /*private bool TasksExists(int id)
         {
             return _context.Tasks.Any(e => e.TasksId == id);
-        }
+        }*/
     }
 }

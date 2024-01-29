@@ -20,7 +20,6 @@ namespace TaskLoggerApi.Data
         {
             return await _context.Users
                 .Include(u => u.Tasks)
-                .Include(u => u.Groups)
                 .SingleOrDefaultAsync(u => u.UserName == username);
         }
 
@@ -28,7 +27,6 @@ namespace TaskLoggerApi.Data
         {
             return await _context.Users
                 .Include(u => u.Tasks)
-                .Include(u => u.Groups)
                 .ToListAsync();
         }
 

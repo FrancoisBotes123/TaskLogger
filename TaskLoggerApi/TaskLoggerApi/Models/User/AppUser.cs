@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using TaskLoggerApi.Models.Tasks;
 
 namespace TaskLoggerApi.Models.User
 {
@@ -9,8 +10,7 @@ namespace TaskLoggerApi.Models.User
         public DateTime LastActvie { get; set; } = DateTime.UtcNow;
 
         public ICollection<UserRole> Roles { get; set; }
-        public List<Tasks> Tasks { get; set; }
-        public List<Groups> Groups { get; set; } // If a user can belong to multiple pools
+        public List<Taskss> Tasks { get; set; }// If a user can belong to multiple pools
 
     }
 }

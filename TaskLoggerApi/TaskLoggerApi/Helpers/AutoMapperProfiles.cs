@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TaskLoggerApi.Models.Tasks;
 using TaskLoggerApi.Models.User;
 
 namespace TaskLoggerApi.Helpers
@@ -19,6 +20,10 @@ namespace TaskLoggerApi.Helpers
 
             CreateMap<AppUser, UpdateUserDTO>();
             CreateMap<UpdateUserDTO, AppUser>();
+
+            CreateMap<Taskss, UpdateTaskDTO>();
+            CreateMap<UpdateTaskDTO, Taskss>();
+
 
         }
     }
