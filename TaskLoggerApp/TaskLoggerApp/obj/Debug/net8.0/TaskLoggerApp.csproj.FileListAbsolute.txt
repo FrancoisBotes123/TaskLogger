@@ -47,3 +47,9 @@ C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp\obj\Debug\net
 C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp\obj\Debug\net8.0\TaskLoggerApp.pdb
 C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp\obj\Debug\net8.0\TaskLoggerApp.genruntimeconfig.cache
 C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp\obj\Debug\net8.0\ref\TaskLoggerApp.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp\bin\Debug\net8.0\Blazored.LocalStorage.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Authorization.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp\bin\Debug\net8.0\Microsoft.Extensions.Options.dll

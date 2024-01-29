@@ -1,0 +1,35 @@
+﻿<div class="task-card">
+    <h3>@Title</h3>
+    <p>@Description</p>
+    <input type="checkbox" checked="@IsCompleted" @onclick="ToggleCompletion" /> Completed
+    <button @onclick="DeleteTask">Delete</button>
+</div>
+
+@code {
+    // You might want to create a Task model to hold these properties
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Description { get; set; }
+
+    [Parameter]
+    public bool IsCompleted { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnCompletionChanged { get; set; }
+
+    [Parameter]
+    public EventCallback OnDelete { get; set; }
+
+    private async Task ToggleCompletion()
+    {
+        IsCompleted = !IsCompleted;
+        await OnCompletionChanged.InvokeAsync(IsCompleted);
+    }
+
+    private async Task DeleteTask()
+    {
+        await OnDelete.InvokeAsync();
+    }
+}

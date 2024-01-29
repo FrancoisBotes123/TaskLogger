@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskLoggerApp.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63c50bc65c7e3a6714d163c641cd48e7fc3e090c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskLoggerApp.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskLoggerApp.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

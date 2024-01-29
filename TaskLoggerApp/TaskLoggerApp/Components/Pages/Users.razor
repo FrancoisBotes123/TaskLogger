@@ -35,11 +35,11 @@ else
 }
 
 @code {
-    private List<User> users;
+    private List<UserModel> users;
 
     protected override async Task OnInitializedAsync()
     {
-        users = await Http.GetFromJsonAsync<List<User>>("api/users");
+        users = await Http.GetFromJsonAsync<List<UserModel>>("api/users");
     }
 }
 

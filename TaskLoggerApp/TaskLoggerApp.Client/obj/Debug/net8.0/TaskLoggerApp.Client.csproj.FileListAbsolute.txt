@@ -1027,3 +1027,13 @@ C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\obj\De
 C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\obj\Debug\net8.0\refint\TaskLoggerApp.Client.dll
 C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\obj\Debug\net8.0\TaskLoggerApp.Client.pdb
 C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\obj\Debug\net8.0\ref\TaskLoggerApp.Client.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\bin\Debug\net8.0\wwwroot\_framework\Blazored.LocalStorage.wasm
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.wasm
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\bin\Debug\net8.0\wwwroot\_framework\Blazored.LocalStorage.wasm.gz
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.wasm.gz
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\bin\Debug\net8.0\Blazored.LocalStorage.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Authorization.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\obj\Debug\net8.0\webcil\Blazored.LocalStorage.wasm
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.Authorization.wasm
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\obj\Debug\net8.0\compressed\1on3ire5t7.gz
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client\obj\Debug\net8.0\compressed\9qys37caeo.gz

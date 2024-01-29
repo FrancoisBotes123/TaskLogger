@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using TaskLoggerApi.Data;
-using TaskLoggerApi.HelperModels;
+using System.Security.Claims;
+using TaskLoggerApi.Interfaces;
 using TaskLoggerApi.Models.User;
 
 namespace TaskLoggerApi.Controllers
@@ -15,66 +10,72 @@ namespace TaskLoggerApi.Controllers
     [Authorize]
     public class UsersController : BaseApiController
     {
-       
-        private readonly TaskLoggerDbContext _context;
-        public UsersController(TaskLoggerDbContext context)
+        private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
+        public UsersController(IUserRepository userRepository, IMapper mapper)
         {
-            _context = context;
+            _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserReturnDTO>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            var user = await _userRepository.GetUsersAsync();
+
+            var userToReturn = _mapper.Map<IEnumerable<UserReturnDTO>>(user);
+
+            return Ok(userToReturn);
         }
 
         // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AppUser>> GetUser(int id)
+        [HttpGet("{username}")]
+        public async Task<ActionResult<UserReturnDTO>> GetUserByUsername(string username)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userRepository.GetUserByUserNameAsync(username);
 
-            if (user == null)
-            {
-                return NotFound();
-            }
+            var userToReturn = _mapper.Map<UserReturnDTO>(user);
 
-            return user;
+            return Ok(userToReturn);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> UpdateUser(UpdateUserDTO updateUser)
+        {
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            var user = await _userRepository.GetUserByUserNameAsync(username);
+
+            if (user == null) return NotFound();
+
+            _mapper.Map(updateUser,user);
+
+            if (await _userRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("User could not be updated");
         }
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, AppUser user)
+        /*[HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, UpdateUserDTO user)
         {
-            if (id != user.AppUserId)
-            {
-                return BadRequest();
-            }
+            
+            var userToUpdate = await _userRepository.GetUserByIdAsync(id);
 
-            _context.Entry(user).State = EntityState.Modified;
+            if (userToUpdate == null) return NotFound();
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            userToUpdate = _mapper.Map<AppUser>(user);
 
-            return NoContent();
-        }
+            bool res = await _userRepository.UpdateUserAsync(userToUpdate);
 
-        // POST: api/Users
+             if (!res) return NotFound();
+
+            return Ok(user);
+        }*/
+
+        /*/ POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<AppUser>> PostUser(AppUser user)
@@ -126,7 +127,7 @@ namespace TaskLoggerApi.Controllers
         private bool UserExists(int id)
         {
             return _context.Users.Any(e => e.AppUserId == id);
-        }
+        }*/
 
 
     }

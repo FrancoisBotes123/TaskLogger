@@ -1,0 +1,151 @@
+﻿@page "/login"
+@using System.ComponentModel.DataAnnotations
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@rendermode InteractiveWebAssembly
+
+
+
+@if (showSignUp)
+    {
+
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh">
+        <div class="container">
+            <div class="row">
+                    <div class="col-sm-4">
+                        <h2>Sign Up</h2>
+                    <EditForm Model="@signUpModel" OnValidSubmit="@HandleSignUp" FormName="SignUpForm">
+                           @*  <DataAnnotationsValidator />
+                            <ValidationSummary /> *@
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <InputText id="username" @bind-Value="@loginModel.Username" />
+                        </div>
+                            <div class="form-group mt-3">
+                                <label for="email">Email:</label>
+                                <InputText id="email" @bind-Value="@signUpModel.Email" />
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label for="password">Password:</label>
+                                <InputText id="password" @bind-Value="@signUpModel.Password" type="password" />
+                            </div>
+
+
+                            <div class="form-group mt-3">
+                                <label for="confirmPassword">Confirm Password:</label>
+                                <InputText id="confirmPassword" @bind-Value="@signUpModel.ConfirmPassword" type="password" />
+                            </div>
+
+
+                            <div class="form-group mt-3">
+                            <button class="btn btn-primary" @onclick="HandleSignUp" disabled="@isProcessing">Sign Up</button>
+                            </div>
+
+                        </EditForm>
+
+                    <button class="btn btn-secondary" @onclick="ToggleSignup">Already a member</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+    else
+    {
+     <div style="display: flex; justify-content: center; align-items: center; height: 100vh">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>Login</h2>
+                    <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" FormName="LoginForm">
+                        @* <DataAnnotationsValidator />
+                        <ValidationSummary /> *@
+
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <InputText id="username" @bind-Value="@loginModel.Username" />
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="password">Password:</label>
+                            <InputText id="password" @bind-Value="@loginModel.Password" type="password" />
+                        </div>
+
+
+                        <div class="form-group mt-3">
+                            <button class="btn btn-primary" @onclick="HandleLogin" disabled="@isProcessing"  >Login</button>
+                        </div>
+
+                    </EditForm>
+                    <button class="btn btn-secondary" @onclick="ToggleSignup">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
+
+
+@code {
+    [Parameter] 
+    public EventCallback<bool> OnAuthenticationChanged { get; set; }
+
+    private bool showSignUp = true;
+    private bool isProcessing = false;
+
+    private LoginModel loginModel = new LoginModel();
+    private SignUpModel signUpModel = new SignUpModel();
+
+    private async Task HandleLogin()
+    {
+        isProcessing = true;
+        Console.WriteLine("Sign up handler called");
+        // Your sign-up logic here
+        await OnAuthenticationChanged.InvokeAsync(true);
+        isProcessing = false;
+    }
+
+    private async Task HandleSignUp()
+    {
+        isProcessing = true;
+        Console.WriteLine("Sign up handler called");
+        // Your sign-up logic here
+        await OnAuthenticationChanged.InvokeAsync(true);
+        isProcessing = false;
+    }
+
+    private void ToggleSignup()
+    {
+        this.showSignUp = !this.showSignUp;
+    }
+
+    public class LoginModel
+    {
+        
+        [Required]
+        [EmailAddress]
+        public string Username { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
+
+    public class SignUpModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Username { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Required]
+        [Compare(nameof(Password))]
+        [DataType(DataType.Password)]
+        public string ConfirmPassword { get; set; }
+    }
+}

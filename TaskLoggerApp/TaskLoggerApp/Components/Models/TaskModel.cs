@@ -2,7 +2,7 @@
 
 namespace TaskLoggerApp.Components.Models
 {
-    public class Tasks
+    public class TaskModel
     {
         public int TasksId { get; set; }
         public string Title { get; set; }
@@ -10,6 +10,6 @@ namespace TaskLoggerApp.Components.Models
         public bool IsCompleted { get; set; }
         public DateTime CreatedDate { get; set; }
         public int UserId { get; set; }
-        public User User { get; set; }
+        public UserModel User { get; set; }
     }
 }

@@ -22,8 +22,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Francois\Documents\TaskLogger\TaskLoggerApp\TaskLoggerApp.Client
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Francois/Documents/TaskLogger/TaskLoggerApp/TaskLoggerApp.Client/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+[C:/Users/Francois/Documents/TaskLogger/TaskLoggerApp/TaskLoggerApp.Client/Pages/AddTaskDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkVGFza0RpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Francois/Documents/TaskLogger/TaskLoggerApp/TaskLoggerApp.Client/Pages/Auth.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Francois/Documents/TaskLogger/TaskLoggerApp/TaskLoggerApp.Client/Pages/Base.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFzZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Francois/Documents/TaskLogger/TaskLoggerApp/TaskLoggerApp.Client/Pages/TaskComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza0NvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Francois/Documents/TaskLogger/TaskLoggerApp/TaskLoggerApp.Client/Pages/Tasks.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza3MucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Francois/Documents/TaskLogger/TaskLoggerApp/TaskLoggerApp.Client/_Imports.razor]

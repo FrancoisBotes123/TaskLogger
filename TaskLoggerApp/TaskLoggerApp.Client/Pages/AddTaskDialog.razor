@@ -1,0 +1,40 @@
+﻿@using static TaskLoggerApp.Client.Pages.Tasks
+<div class="task-add-dialog">
+    <EditForm Model="@task" OnValidSubmit="@SubmitTask">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <label for="title">Task Title:</label>
+        <InputText id="title" @bind-Value="@task.Title" />
+
+        <label for="description">Task Description:</label>
+        <InputTextArea id="description" @bind-Value="@task.Description" />
+
+        <button type="submit">Save</button>
+    </EditForm>
+</div>
+  
+
+@code {
+    private TaskModel task = new TaskModel();
+
+    [Parameter]
+    public EventCallback<TaskModel> OnTaskAdded { get; set; }
+
+    public class TaskAddDialog : ComponentBase
+    {
+        // ...
+    }
+
+    public void Show()
+    {
+        task = new TaskModel(); // Reset the task model for a new entry
+                                // Logic to show the dialog
+    }
+
+    private async Task SubmitTask()
+    {
+        await OnTaskAdded.InvokeAsync(task);
+        // Logic to close the dialog
+    }
+}

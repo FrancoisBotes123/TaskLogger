@@ -1,0 +1,61 @@
+﻿@page "/tasks"
+@rendermode InteractiveWebAssembly
+@using System.Collections.Generic
+
+<PageTitle>Tasks</PageTitle>
+
+<AddTaskDialog @ref="taskAddDialog" OnTaskAdded="HandleTaskAdded" />
+
+<button @onclick="OpenAddTaskDialog">New</button>
+
+<div>
+    @if (tasks.Count == 0)
+    {
+        <p>No tasks added yet.</p>
+    }
+    else
+    {
+        foreach (var task in tasks)
+        {
+            <TaskComponent Title="@task.Title" Description="@task.Description" IsCompleted="@task.IsCompleted"
+                           OnCompletionChanged="() => TaskCompletionChanged(task)"
+                           OnDelete="() => DeleteTask(task)" />
+        }
+    }
+</div>
+
+
+@code {
+    private List<TaskModel> tasks = new List<TaskModel>();
+    private AddTaskDialog taskAddDialog;
+
+    private void OpenAddTaskDialog()
+    {
+        taskAddDialog.Show();
+    }
+
+    private void HandleTaskAdded(TaskModel task)
+    {
+        tasks.Add(task);
+        StateHasChanged(); // Re-renders the component to update the UI
+    }
+
+    private void TaskCompletionChanged(TaskModel task)
+    {
+        // Here you can handle the task completion change, like updating a database
+    }
+
+    private void DeleteTask(TaskModel task)
+    {
+        tasks.Remove(task);
+        StateHasChanged(); // Re-renders the component to update the UI
+    }
+
+    // Define the TaskModel (you could put this in a separate file)
+    public class TaskModel
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public bool IsCompleted { get; set; }
+    }
+}

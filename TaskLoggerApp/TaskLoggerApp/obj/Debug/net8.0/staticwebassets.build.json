@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "o7RSf21sinbtv0ZNg69YX/e/DSBRXnfyOjR6v2pdB64=",
+  "Hash": "Ogi9H5ppooeselQ+jcDy7/+6rWw9ZfD4jDQDoZV2MrQ=",
   "Source": "TaskLoggerApp",
   "BasePath": "_content/TaskLoggerApp",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Francois\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\8.0.0\\build\\net8.0\\blazor.webassembly.js"
+    },
+    {
+      "Identity": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Blazored.LocalStorage.wasm",
+      "SourceId": "TaskLoggerApp.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.LocalStorage.wasm",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\obj\\Debug\\net8.0\\webcil\\Blazored.LocalStorage.wasm"
     },
     {
       "Identity": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js",
@@ -262,6 +281,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\obj\\Debug\\net8.0\\webcil\\Microsoft.AspNetCore.Authorization.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.wasm",
+      "SourceId": "TaskLoggerApp.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.wasm",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\obj\\Debug\\net8.0\\webcil\\Microsoft.AspNetCore.Components.Authorization.wasm"
     },
     {
       "Identity": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.wasm",
@@ -4178,6 +4216,25 @@
       "OriginalItemSpec": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Runtime.Serialization.Json.wasm"
     },
     {
+      "Identity": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\obj\\Debug\\net8.0\\compressed\\1on3ire5t7.gz",
+      "SourceId": "TaskLoggerApp.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.LocalStorage.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Blazored.LocalStorage.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Blazored.LocalStorage.wasm"
+    },
+    {
       "Identity": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\obj\\Debug\\net8.0\\compressed\\1v6bu9vkrx.gz",
       "SourceId": "TaskLoggerApp.Client",
       "SourceType": "Project",
@@ -4917,6 +4974,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.IO.FileSystem.Primitives.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\obj\\Debug\\net8.0\\compressed\\9qys37caeo.gz",
+      "SourceId": "TaskLoggerApp.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.wasm"
     },
     {
       "Identity": "C:\\Users\\Francois\\Documents\\TaskLogger\\TaskLoggerApp\\TaskLoggerApp.Client\\obj\\Debug\\net8.0\\compressed\\9w9c5d8fo0.gz",

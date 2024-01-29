@@ -1,11 +1,5 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using TaskLoggerApi.Data;
 using TaskLoggerApi.Extentions;
-using TaskLoggerApi.Interfaces;
-using TaskLoggerApi.Services;
+using TaskLoggerApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +11,8 @@ builder.Services.AddIdentityServices(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+app.UseMiddleware<ExceptionMiddleware>();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
