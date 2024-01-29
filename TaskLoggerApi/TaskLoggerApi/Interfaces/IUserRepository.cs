@@ -4,7 +4,7 @@ namespace TaskLoggerApi.Interfaces
 {
     public interface IUserRepository
     {
-        Task<bool> UpdateUserAsync(AppUser user);
+        void UpdateUser(AppUser user);
 
         Task<bool> SaveAllAsync();
 

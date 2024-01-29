@@ -1,9 +1,11 @@
-﻿namespace TaskLoggerApi.Models.User
+﻿
+using Microsoft.AspNetCore.Identity;
+
+namespace TaskLoggerApi.Models.User
 {
-    public enum UserRole
+    public class UserRole: IdentityUserRole<int>
     {
-        Admin,
-        Manager,
-        User
+        public AppUser User { get; set; }
+        public AppRole Role { get; set; }
     }
 }

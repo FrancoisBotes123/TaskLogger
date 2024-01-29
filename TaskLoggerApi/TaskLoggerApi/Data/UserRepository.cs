@@ -13,10 +13,7 @@ namespace TaskLoggerApi.Data
         }
         public async Task<AppUser> GetUserByIdAsync(int id)
         {
-            return await _context.Users
-                .Include(u => u.Tasks)
-                .Include(u => u.Groups)
-                .SingleOrDefaultAsync(u => u.AppUserId == id);
+            return await _context.Users.FindAsync(id);
         }
 
         public async Task<AppUser> GetUserByUserNameAsync(string username)
@@ -40,34 +37,10 @@ namespace TaskLoggerApi.Data
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> UpdateUserAsync(AppUser user)
+        public void UpdateUser(AppUser user)
         {
-           
-
             _context.Entry(user).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(user.AppUserId))
-                {
-                    return false;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return true;
         }
 
-        private bool UserExists(int id)
-        {
-            return _context.Users.Any(e => e.AppUserId == id);
-        }
     }
 }

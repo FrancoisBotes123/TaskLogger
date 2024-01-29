@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,13 +12,15 @@ namespace TaskLoggerApi.Controllers
 {
     public class AuthController : BaseApiController
     {
-        private readonly TaskLoggerDbContext _context;
         private readonly ITokenService _tokenService;
+        private readonly IMapper _mapper;
+        private readonly UserManager<AppUser> _userManager;
 
-        public AuthController(TaskLoggerDbContext context, ITokenService tokenService)
+        public AuthController(UserManager<AppUser> userManager, ITokenService tokenService,IMapper mapper)
         {
-            _context = context;
             _tokenService = tokenService;
+            _mapper = mapper;
+            _userManager = userManager;
         }
 
         //POST: api/auth/register
@@ -26,25 +30,21 @@ namespace TaskLoggerApi.Controllers
             if (await UserExists(registerUser.UserName.ToLower())) return BadRequest("Username already Exists");
 
 
-            using var hmac = new HMACSHA512();
+            var user = _mapper.Map<AppUser>(registerUser);
 
-            var user = new AppUser
-            {
-                UserName = registerUser.UserName.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerUser.Password)),
-                PasswordSalt = hmac.Key
-            };
+            user.UserName = registerUser.UserName.ToLower();
+            var res = await _userManager.CreateAsync(user,registerUser.Password);
 
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            if (!res.Succeeded) return BadRequest(res.Errors);
 
+            var roleResult = await _userManager.AddToRoleAsync(user, "User");
+
+            if (!roleResult.Succeeded) return BadRequest(roleResult.Errors);
             return Ok(new UserReturnDTO
             {
                 UserName = user.UserName,
-                Token=_tokenService.CreateToken(user),
-                Role = user.Role,
-                Groups = user.Groups,
-                Tasks = user.Tasks,
+                Token= await _tokenService.CreateToken(user),
+                Tasks = user.Tasks
             });
         }
 
@@ -52,32 +52,25 @@ namespace TaskLoggerApi.Controllers
 
         public async Task<ActionResult<UserReturnDTO>> Login(UserLoginDTO userLoginDTO)
         {
-            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserName == userLoginDTO.UserName);
+            var user = await _userManager.Users.SingleOrDefaultAsync(u => u.UserName == userLoginDTO.UserName);
 
             if (user == null) return Unauthorized("Username incorrect");
 
-            using var hmac = new HMACSHA512(user.PasswordSalt);
+            var res = await _userManager.CheckPasswordAsync(user, userLoginDTO.Password);
 
-            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(userLoginDTO.Password));
-
-            for(int i = 0; i < computedHash.Length; i++)
-            {
-                if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Password incorrect");
-            }
+            if (!res) return Unauthorized("Invalid Password");
 
             return Ok(new UserReturnDTO
             {
                 UserName = user.UserName,
-                Token = _tokenService.CreateToken(user),
-                Role = user.Role,
-                Groups = user.Groups,
+                Token = await _tokenService.CreateToken(user),
                 Tasks = user.Tasks,
             });
 
         }
         private async Task<bool> UserExists(string username)
         {
-            return await _context.Users.AnyAsync(x => x.UserName == username.ToLower());
+            return await _userManager.Users.AnyAsync(x => x.UserName == username.ToLower());
         }
 
     }

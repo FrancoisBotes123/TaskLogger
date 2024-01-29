@@ -297,3 +297,9 @@ C:\Users\Francois\Documents\TaskLogger\TaskLoggerApi\TaskLoggerApi\bin\Debug\net
 C:\Users\Francois\Documents\TaskLogger\TaskLoggerApi\TaskLoggerApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Francois\Documents\TaskLogger\TaskLoggerApi\TaskLoggerApi\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\Francois\Documents\TaskLogger\TaskLoggerApi\TaskLoggerApi\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApi\TaskLoggerApi\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApi\TaskLoggerApi\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApi\TaskLoggerApi\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApi\TaskLoggerApi\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApi\TaskLoggerApi\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Francois\Documents\TaskLogger\TaskLoggerApi\TaskLoggerApi\bin\Debug\net8.0\Data\UserSeed.json

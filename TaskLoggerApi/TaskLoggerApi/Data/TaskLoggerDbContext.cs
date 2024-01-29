@@ -1,18 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using TaskLoggerApi.Models;
 using TaskLoggerApi.Models.User;
 
 
 namespace TaskLoggerApi.Data
 {
-    public class TaskLoggerDbContext : DbContext
+    public class TaskLoggerDbContext : IdentityDbContext<AppUser, AppRole, int, 
+        IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>,
+        IdentityUserToken<int>>
     {
 
         public TaskLoggerDbContext(DbContextOptions<TaskLoggerDbContext> options) : base(options)
         {
         }
 
-        public DbSet<AppUser> Users { get; set; }
         public DbSet<Tasks> Tasks { get; set; }
         public DbSet<Groups> Groups { get; set; }
 
@@ -26,6 +29,19 @@ namespace TaskLoggerApi.Data
                 .HasMany(u => u.Tasks)
                 .WithOne(t => t.User)
                 .HasForeignKey(t => t.UserId);
+
+            modelBuilder.Entity<AppUser>()
+                .HasMany(ur => ur.Roles)
+                .WithOne(u => u.User)
+                .HasForeignKey(ur => ur.UserId)
+                .IsRequired();
+
+            modelBuilder.Entity<AppRole>()
+                .HasMany(ur => ur.UserRoles)
+                .WithOne(u => u.Role)
+                .HasForeignKey(ur => ur.RoleId)
+                .IsRequired();
+
 
             // Pool to Manager (User) relationship
             modelBuilder.Entity<Groups>()

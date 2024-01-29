@@ -1,5 +1,10 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using TaskLoggerApi.Data;
 using TaskLoggerApi.Extentions;
 using TaskLoggerApi.Middleware;
+using TaskLoggerApi.Models;
+using TaskLoggerApi.Models.User;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,5 +31,23 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using var scope = app.Services.CreateScope();
+
+var services = scope.ServiceProvider;
+
+try
+{
+    var context = services.GetRequiredService<TaskLoggerDbContext>();
+    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+    var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
+    await context.Database.MigrateAsync();
+    await Seed.SeedUsers(userManager, roleManager);
+}
+catch (Exception ex)
+{
+    var logger = services.GetService<ILogger<Program>>();
+    logger.LogError(ex, "An Error occured during migration");
+}
 
 app.Run();
