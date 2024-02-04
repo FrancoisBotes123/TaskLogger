@@ -32,7 +32,7 @@ namespace TaskLoggerApi.Controllers
         }
 
         [Authorize(Policy = "RequireAdminRole")]
-        [HttpPost("adit-roles/{username}")]
+        [HttpPost("edit-roles/{username}")]
 
         public async Task<ActionResult> EditRoles(string username,[FromQuery]string roles)
         {

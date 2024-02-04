@@ -18,6 +18,7 @@ namespace TaskLoggerApi.Controllers
             _mapper = mapper;
         }
 
+
         // GET: api/Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserReturnDTO>>> GetUsers()
